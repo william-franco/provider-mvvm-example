@@ -21,6 +21,11 @@ flutter run -d chrome --web-renderer html
 | ![App Screenshot](assets/screenshots/screen-4.png) | ![App Screenshot](assets/screenshots/screen-5.png) | ![App Screenshot](assets/screenshots/screen-6.png) |
 
 
+## Models
+
+Models were created using [JSON to Dart](https://javiercbk.github.io/json_to_dart/).
+
+
 ## License
 
 MIT License

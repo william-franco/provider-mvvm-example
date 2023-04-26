@@ -21,7 +21,7 @@ class _BottomViewState extends State<BottomView> {
 
   @override
   Widget build(BuildContext context) {
-    final tab = context.watch<BottomViewModel>().tab;
+    final tab = context.watch<BottomViewModel>().value;
     return Scaffold(
       body: _tabs[tab],
       bottomNavigationBar: NavigationBar(

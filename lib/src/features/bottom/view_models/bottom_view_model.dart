@@ -2,19 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-class BottomViewModel extends ChangeNotifier {
-  BottomViewModel();
-
-  int _tab = 0;
-  int get tab => _tab;
+class BottomViewModel extends ValueNotifier<int> {
+  BottomViewModel() : super(0);
 
   void changeTab(int index) {
-    _tab = index;
+    value = index;
     _debug();
     notifyListeners();
   }
 
   void _debug() {
-    log('Tab: $_tab');
+    log('Tab: $value');
   }
 }

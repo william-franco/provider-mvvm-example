@@ -9,13 +9,13 @@ class SettingRepository {
   });
 
   Future<bool> readTheme() async {
-    final isDarkMode = await storageService.getBoolValue(
+    final isDarkTheme = await storageService.getBoolValue(
       key: Constants.darkMode,
     );
-    return isDarkMode;
+    return isDarkTheme;
   }
 
-  Future<void> updateTheme(bool isDarkTheme) async {
+  Future<void> updateTheme({required bool isDarkTheme}) async {
     await storageService.setBoolValue(
       key: Constants.darkMode,
       value: isDarkTheme,

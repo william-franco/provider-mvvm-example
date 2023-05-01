@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = context.watch<SettingViewModel>().isDarkMode;
+    final isDarkTheme = context.watch<SettingViewModel>().isDarkTheme;
     return MaterialApp.router(
       title: 'Provider MVVM Example',
       debugShowCheckedModeBanner: false,
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark(
         useMaterial3: true,
       ),
-      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
       routerConfig: routesApp.routes,
     );
   }

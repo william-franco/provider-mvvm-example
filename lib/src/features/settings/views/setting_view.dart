@@ -8,7 +8,7 @@ class SettingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = context.watch<SettingViewModel>().isDarkMode;
+    final isDarkTheme = context.watch<SettingViewModel>().isDarkTheme;
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -21,7 +21,7 @@ class SettingView extends StatelessWidget {
               leading: const Icon(Icons.brightness_6_outlined),
               title: const Text('Dark theme'),
               trailing: Switch(
-                value: isDarkMode,
+                value: isDarkTheme,
                 onChanged: (bool enabled) {
                   context.read<SettingViewModel>().changeTheme(enabled);
                 },

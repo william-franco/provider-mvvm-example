@@ -12,23 +12,23 @@ class SettingViewModel extends ChangeNotifier {
     _loadTheme();
   }
 
-  bool _isDarkMode = false;
-  bool get isDarkMode => _isDarkMode;
+  bool _isDarkTheme = false;
+  bool get isDarkTheme => _isDarkTheme;
 
   Future<void> _loadTheme() async {
-    _isDarkMode = await settingRepository.readTheme();
+    _isDarkTheme = await settingRepository.readTheme();
     _debug();
     notifyListeners();
   }
 
-  Future<void> changeTheme(bool isDarkMode) async {
-    _isDarkMode = isDarkMode;
-    await settingRepository.updateTheme(isDarkMode);
+  Future<void> changeTheme(bool isDarkTheme) async {
+    _isDarkTheme = isDarkTheme;
+    await settingRepository.updateTheme(isDarkTheme: isDarkTheme);
     _debug();
     notifyListeners();
   }
 
   void _debug() {
-    log('Dark theme: $_isDarkMode');
+    log('Dark theme: $_isDarkTheme');
   }
 }

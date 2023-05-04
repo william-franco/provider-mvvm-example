@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:provider_mvvm_example/src/features/bottom/view_models/bottom_view_model.dart';
 import 'package:provider_mvvm_example/src/features/photos/repositories/photo_repository.dart';
 import 'package:provider_mvvm_example/src/features/photos/view_models/photo_view_model.dart';

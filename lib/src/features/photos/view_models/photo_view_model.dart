@@ -1,6 +1,10 @@
+// Dart imports:
 import 'dart:developer';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:provider_mvvm_example/src/features/photos/models/photo_model.dart';
 import 'package:provider_mvvm_example/src/features/photos/repositories/photo_repository.dart';
 

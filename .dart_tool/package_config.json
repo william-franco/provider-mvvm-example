@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "args",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/args-2.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "async",
       "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/async-2.10.0",
       "packageUri": "lib/",
@@ -94,6 +100,12 @@
     {
       "name": "http_parser",
       "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "import_sorter",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/import_sorter-4.6.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -272,6 +284,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "tint",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/tint-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "typed_data",
       "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/typed_data-1.3.1",
       "packageUri": "lib/",
@@ -296,13 +314,19 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "yaml",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/yaml-3.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
+    },
+    {
       "name": "provider_mvvm_example",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-26T19:47:27.450656Z",
+  "generated": "2023-05-04T21:04:50.878606Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

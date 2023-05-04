@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Package imports:
 import 'package:go_router/go_router.dart';
+
+// Project imports:
 import 'package:provider_mvvm_example/src/features/bottom/views/bottom_view.dart';
 
 final routesApp = Routes();

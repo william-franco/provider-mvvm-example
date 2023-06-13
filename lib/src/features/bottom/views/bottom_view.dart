@@ -32,8 +32,8 @@ class _BottomViewState extends State<BottomView> {
       bottomNavigationBar: NavigationBar(
         selectedIndex: tab,
         animationDuration: const Duration(milliseconds: 600),
-        onDestinationSelected: (int value) {
-          context.read<BottomViewModel>().changeIndexBottom(value);
+        onDestinationSelected: (int index) {
+          context.read<BottomViewModel>().changeIndexBottom(index: index);
         },
         destinations: const <NavigationDestination>[
           NavigationDestination(

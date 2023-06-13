@@ -7,32 +7,40 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:provider_mvvm_example/src/features/settings/repositories/setting_repository.dart';
 
-class SettingViewModel extends ChangeNotifier {
+abstract base class SettingViewModel extends ValueNotifier<bool> {
+  SettingViewModel() : super(false);
+
+  Future<void> loadTheme();
+  Future<void> changeTheme({required bool isDarkTheme});
+}
+
+base class SettingViewModelImpl extends ValueNotifier<bool>
+    implements SettingViewModel {
   final SettingRepository settingRepository;
 
-  SettingViewModel({
+  SettingViewModelImpl({
     required this.settingRepository,
-  }) {
-    _loadTheme();
+  }) : super(false) {
+    loadTheme();
   }
 
-  bool _isDarkTheme = false;
-  bool get isDarkTheme => _isDarkTheme;
-
-  Future<void> _loadTheme() async {
-    _isDarkTheme = await settingRepository.readTheme();
+  @override
+  Future<void> loadTheme() async {
+    final isDarkTheme = await settingRepository.readTheme();
+    value = isDarkTheme;
     _debug();
     notifyListeners();
   }
 
-  Future<void> changeTheme(bool isDarkTheme) async {
-    _isDarkTheme = isDarkTheme;
+  @override
+  Future<void> changeTheme({required bool isDarkTheme}) async {
+    value = isDarkTheme;
     await settingRepository.updateTheme(isDarkTheme: isDarkTheme);
     _debug();
     notifyListeners();
   }
 
   void _debug() {
-    log('Dark theme: $_isDarkTheme');
+    log('Dark theme: $value');
   }
 }

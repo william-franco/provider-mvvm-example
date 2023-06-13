@@ -5,33 +5,33 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:provider_mvvm_example/src/features/todos/models/todo_model.dart';
 import 'package:provider_mvvm_example/src/features/todos/repositories/todo_repository.dart';
+import 'package:provider_mvvm_example/src/features/todos/state/todo_state.dart';
 
-class TodoViewModel extends ChangeNotifier {
+abstract base class TodoViewModel extends ValueNotifier<TodoState> {
+  TodoViewModel() : super(TodoInitial());
+
+  Future<void> loadTodos();
+}
+
+base class TodoViewModelImpl extends ValueNotifier<TodoState>
+    implements TodoViewModel {
   final TodoRepository todoRepository;
 
-  TodoViewModel({
+  TodoViewModelImpl({
     required this.todoRepository,
-  });
+  }) : super(TodoInitial());
 
-  List<TodoModel> _todos = [];
-  List<TodoModel> get todos => _todos;
-
-  Future<List<TodoModel>> loadTodos() async {
-    _todos = await todoRepository.readTodos();
-    _debug();
-    notifyListeners();
-    return _todos;
-  }
-
-  Future<void> refreshTodos() async {
-    _todos = await todoRepository.readTodos();
+  @override
+  Future<void> loadTodos() async {
+    value = TodoLoading();
+    final todos = await todoRepository.readTodos();
+    value = TodoSuccess(todos: todos);
     _debug();
     notifyListeners();
   }
 
   void _debug() {
-    log('Todos: $_todos');
+    log('Todo state: $value');
   }
 }

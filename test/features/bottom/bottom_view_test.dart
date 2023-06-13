@@ -23,8 +23,8 @@ void main() {
       final photoView = find.byType(PhotoView);
       final todoView = find.byType(TodoView);
       final settingView = find.byType(SettingView);
-      final listIcon = (find.byIcon(Icons.list_outlined));
-      final settingsIcon = (find.byIcon(Icons.settings_outlined));
+      final listIcon = find.byIcon(Icons.list_outlined);
+      final settingsIcon = find.byIcon(Icons.settings_outlined);
 
       await tester.pumpWidget(widget);
 

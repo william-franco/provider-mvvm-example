@@ -4,10 +4,18 @@ import 'dart:developer';
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-class BottomViewModel extends ValueNotifier<int> {
+abstract base class BottomViewModel extends ValueNotifier<int> {
   BottomViewModel() : super(0);
 
-  void changeIndexBottom(int index) {
+  void changeIndexBottom({required int index});
+}
+
+base class BottomViewModelImpl extends ValueNotifier<int>
+    implements BottomViewModel {
+  BottomViewModelImpl() : super(0);
+
+  @override
+  void changeIndexBottom({required int index}) {
     value = index;
     _debug();
     notifyListeners();

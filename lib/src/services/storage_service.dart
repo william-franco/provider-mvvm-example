@@ -1,7 +1,12 @@
 // Package imports:
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StorageService {
+abstract interface class StorageService {
+  Future<bool> getBoolValue({required String key});
+  Future<void> setBoolValue({required String key, required bool value});
+}
+
+class StorageServiceImpl implements StorageService {
   Future<SharedPreferences> _loadStorage() async {
     try {
       final prefs = await SharedPreferences.getInstance();
@@ -11,6 +16,7 @@ class StorageService {
     }
   }
 
+  @override
   Future<bool> getBoolValue({required String key}) async {
     try {
       final storage = await _loadStorage();
@@ -21,6 +27,7 @@ class StorageService {
     }
   }
 
+  @override
   Future<void> setBoolValue({required String key, required bool value}) async {
     try {
       final storage = await _loadStorage();

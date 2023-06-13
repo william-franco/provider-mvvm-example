@@ -9,16 +9,16 @@ void main() {
     late BottomViewModel viewModel;
 
     setUp(() {
-      viewModel = BottomViewModel();
+      viewModel = BottomViewModelImpl();
     });
 
     test('initial value is 0', () {
-      expect(viewModel.value, 0);
+      expect(viewModel.value, equals(0));
     });
 
     test('change index', () {
-      viewModel.changeIndexBottom(1);
-      expect(viewModel.value, 1);
+      viewModel.changeIndexBottom(index: 1);
+      expect(viewModel.value, equals(1));
     });
   });
 }

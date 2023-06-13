@@ -3,16 +3,22 @@ import 'package:provider_mvvm_example/src/environments/environments.dart';
 import 'package:provider_mvvm_example/src/features/todos/models/todo_model.dart';
 import 'package:provider_mvvm_example/src/services/http_service.dart';
 
-class TodoRepository {
+abstract interface class TodoRepository {
+  Future<TodoModel> readTodo(String id);
+  Future<List<TodoModel>> readTodos();
+}
+
+class TodoRepositoryImpl implements TodoRepository {
   final HttpService httpService;
 
-  TodoRepository({
+  TodoRepositoryImpl({
     required this.httpService,
   });
 
+  @override
   Future<TodoModel> readTodo(String id) async {
     final response = await httpService.getData(
-      path: '${Environments.baseURL}${Environments.todos}/$id',
+      path: '${Environments.baseURL}${Environments.todos}$id',
     );
     try {
       if (response.statusCode == 200) {
@@ -26,6 +32,7 @@ class TodoRepository {
     }
   }
 
+  @override
   Future<List<TodoModel>> readTodos() async {
     final response = await httpService.getData(
       path: '${Environments.baseURL}${Environments.todos}',

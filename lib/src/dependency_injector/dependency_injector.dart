@@ -28,44 +28,44 @@ class DependencyInjector extends StatelessWidget {
     return MultiProvider(
       providers: [
         // Services
-        Provider(
-          create: (context) => HttpService(),
+        Provider<HttpService>(
+          create: (context) => HttpServiceImpl(),
         ),
-        Provider(
-          create: (context) => StorageService(),
+        Provider<StorageService>(
+          create: (context) => StorageServiceImpl(),
         ),
         // Repositories
-        Provider(
-          create: (context) => PhotoRepository(
+        Provider<PhotoRepository>(
+          create: (context) => PhotoRepositoryImpl(
             httpService: context.read<HttpService>(),
           ),
         ),
-        Provider(
-          create: (context) => TodoRepository(
+        Provider<TodoRepository>(
+          create: (context) => TodoRepositoryImpl(
             httpService: context.read<HttpService>(),
           ),
         ),
-        Provider(
-          create: (context) => SettingRepository(
+        Provider<SettingRepository>(
+          create: (context) => SettingRepositoryImpl(
             storageService: context.read<StorageService>(),
           ),
         ),
         // ViewModels
-        ChangeNotifierProvider(
-          create: (context) => BottomViewModel(),
+        ChangeNotifierProvider<BottomViewModel>(
+          create: (context) => BottomViewModelImpl(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => PhotoViewModel(
+        ChangeNotifierProvider<PhotoViewModel>(
+          create: (context) => PhotoViewModelImpl(
             photoRepository: context.read<PhotoRepository>(),
           ),
         ),
-        ChangeNotifierProvider(
-          create: (context) => TodoViewModel(
+        ChangeNotifierProvider<TodoViewModel>(
+          create: (context) => TodoViewModelImpl(
             todoRepository: context.read<TodoRepository>(),
           ),
         ),
-        ChangeNotifierProvider(
-          create: (context) => SettingViewModel(
+        ChangeNotifierProvider<SettingViewModel>(
+          create: (context) => SettingViewModelImpl(
             settingRepository: context.read<SettingRepository>(),
           ),
         ),

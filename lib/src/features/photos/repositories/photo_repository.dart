@@ -1,11 +1,12 @@
 // Project imports:
 import 'package:provider_mvvm_example/src/environments/environments.dart';
+import 'package:provider_mvvm_example/src/exception_handling/exception_handling.dart';
 import 'package:provider_mvvm_example/src/features/photos/models/photo_model.dart';
 import 'package:provider_mvvm_example/src/services/http_service.dart';
 
 abstract interface class PhotoRepository {
-  Future<PhotoModel> readPhoto(String id);
-  Future<List<PhotoModel>> readPhotos();
+  Future<Result<PhotoModel, Exception>> readPhoto(String id);
+  Future<Result<List<PhotoModel>, Exception>> readPhotos();
 }
 
 class PhotoRepositoryImpl implements PhotoRepository {
@@ -16,34 +17,37 @@ class PhotoRepositoryImpl implements PhotoRepository {
   });
 
   @override
-  Future<PhotoModel> readPhoto(String id) async {
-    final response = await httpService.getData(
-      path: '${Environments.baseURL}${Environments.photos}$id',
-    );
+  Future<Result<PhotoModel, Exception>> readPhoto(String id) async {
     try {
-      if (response.statusCode == 200) {
-        final success = PhotoModel.fromJson(response.data);
-        return success;
-      } else {
-        throw Exception('Failed to load photo. ${response.statusMessage}');
+      final response = await httpService.getData(
+        path: '${Environments.baseURL}${Environments.photos}$id',
+      );
+      switch (response.statusCode) {
+        case 200:
+          final success = PhotoModel.fromJson(response.data);
+          return Success(value: success);
+        default:
+          return Failure(exception: Exception(response.statusMessage));
       }
-    } catch (error) {
-      throw Exception(error);
+    } on Exception catch (error) {
+      return Failure(exception: error);
     }
   }
 
   @override
-  Future<List<PhotoModel>> readPhotos() async {
-    final response = await httpService.getData(
-      path: '${Environments.baseURL}${Environments.photos}',
-    );
+  Future<Result<List<PhotoModel>, Exception>> readPhotos() async {
     try {
-      if (response.statusCode == 200) {
-        final success =
-            (response.data as List).map((e) => PhotoModel.fromJson(e)).toList();
-        return success;
-      } else {
-        throw Exception('Failed to load photos. ${response.statusMessage}');
+      final response = await httpService.getData(
+        path: '${Environments.baseURL}${Environments.photos}',
+      );
+      switch (response.statusCode) {
+        case 200:
+          final success = (response.data as List)
+              .map((e) => PhotoModel.fromJson(e))
+              .toList();
+          return Success(value: success);
+        default:
+          return Failure(exception: Exception(response.statusMessage));
       }
     } catch (error) {
       throw Exception(error);

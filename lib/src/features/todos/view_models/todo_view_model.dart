@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:provider_mvvm_example/src/exception_handling/exception_handling.dart';
 import 'package:provider_mvvm_example/src/features/todos/repositories/todo_repository.dart';
 import 'package:provider_mvvm_example/src/features/todos/state/todo_state.dart';
 
@@ -25,8 +26,13 @@ base class TodoViewModelImpl extends ValueNotifier<TodoState>
   @override
   Future<void> loadTodos() async {
     value = TodoLoading();
-    final todos = await todoRepository.readTodos();
-    value = TodoSuccess(todos: todos);
+    final result = await todoRepository.readTodos();
+    final todos = switch (result) {
+      Success(value: final todos) => TodoSuccess(todos: todos),
+      Failure(exception: final exception) =>
+        TodoFailure(message: 'Something went wrong: $exception'),
+    };
+    value = todos;
     _debug();
     notifyListeners();
   }

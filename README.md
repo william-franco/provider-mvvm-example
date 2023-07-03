@@ -26,6 +26,15 @@ flutter run -d chrome --web-renderer html
 Models were created using [JSON to Dart](https://javiercbk.github.io/json_to_dart/).
 
 
+## Coverage
+
+flutter test --coverage
+
+genhtml coverage/lcov.info -o coverage/html
+
+open coverage/html/index.html
+
+
 ## License
 
 MIT License

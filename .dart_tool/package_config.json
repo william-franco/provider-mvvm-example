@@ -99,7 +99,7 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/go_router-8.0.2",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/go_router-9.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -207,7 +207,7 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/shared_preferences-2.1.2",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/shared_preferences-2.2.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -231,9 +231,9 @@
     },
     {
       "name": "shared_preferences_platform_interface",
-      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.2.0",
+      "rootUri": "file:///home/william/.pub-cache/hosted/pub.dev/shared_preferences_platform_interface-2.3.0",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "shared_preferences_web",
@@ -332,7 +332,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-13T14:14:36.385719Z",
+  "generated": "2023-07-03T20:17:35.589813Z",
   "generator": "pub",
-  "generatorVersion": "3.0.3"
+  "generatorVersion": "3.0.5"
 }

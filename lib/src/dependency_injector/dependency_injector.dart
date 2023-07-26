@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 // Project imports:
+import 'package:provider_mvvm_example/src/dependency_injector/locator_injector.dart';
 import 'package:provider_mvvm_example/src/features/bottom/view_models/bottom_view_model.dart';
 import 'package:provider_mvvm_example/src/features/photos/repositories/photo_repository.dart';
 import 'package:provider_mvvm_example/src/features/photos/view_models/photo_view_model.dart';
@@ -12,8 +13,6 @@ import 'package:provider_mvvm_example/src/features/settings/repositories/setting
 import 'package:provider_mvvm_example/src/features/settings/view_models/setting_view_model.dart';
 import 'package:provider_mvvm_example/src/features/todos/repositories/todo_repository.dart';
 import 'package:provider_mvvm_example/src/features/todos/view_models/todo_view_model.dart';
-import 'package:provider_mvvm_example/src/services/http_service.dart';
-import 'package:provider_mvvm_example/src/services/storage_service.dart';
 
 class DependencyInjector extends StatelessWidget {
   final Widget child;
@@ -27,46 +26,23 @@ class DependencyInjector extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        // Services
-        Provider<HttpService>(
-          create: (context) => HttpServiceImpl(),
-        ),
-        Provider<StorageService>(
-          create: (context) => StorageServiceImpl(),
-        ),
-        // Repositories
-        Provider<PhotoRepository>(
-          create: (context) => PhotoRepositoryImpl(
-            httpService: context.read<HttpService>(),
-          ),
-        ),
-        Provider<TodoRepository>(
-          create: (context) => TodoRepositoryImpl(
-            httpService: context.read<HttpService>(),
-          ),
-        ),
-        Provider<SettingRepository>(
-          create: (context) => SettingRepositoryImpl(
-            storageService: context.read<StorageService>(),
-          ),
-        ),
         // ViewModels
         ChangeNotifierProvider<BottomViewModel>(
           create: (context) => BottomViewModelImpl(),
         ),
         ChangeNotifierProvider<PhotoViewModel>(
           create: (context) => PhotoViewModelImpl(
-            photoRepository: context.read<PhotoRepository>(),
+            photoRepository: locator<PhotoRepository>(),
           ),
         ),
         ChangeNotifierProvider<TodoViewModel>(
           create: (context) => TodoViewModelImpl(
-            todoRepository: context.read<TodoRepository>(),
+            todoRepository: locator<TodoRepository>(),
           ),
         ),
         ChangeNotifierProvider<SettingViewModel>(
           create: (context) => SettingViewModelImpl(
-            settingRepository: context.read<SettingRepository>(),
+            settingRepository: locator<SettingRepository>(),
           ),
         ),
       ],

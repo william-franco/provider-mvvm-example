@@ -13,12 +13,12 @@ void main() {
     });
 
     test('initial value is 0', () {
-      expect(viewModel.value, equals(0));
+      expect(viewModel.value.indexTab, equals(0));
     });
 
     test('change index', () {
       viewModel.changeIndexBottom(index: 1);
-      expect(viewModel.value, equals(1));
+      expect(viewModel.value.indexTab, equals(1));
     });
   });
 }

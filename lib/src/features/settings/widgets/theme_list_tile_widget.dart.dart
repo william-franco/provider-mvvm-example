@@ -12,12 +12,12 @@ class ThemeListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkTheme = context.watch<SettingViewModel>().value;
+    final viewModel = context.watch<SettingViewModel>();
     return ListTile(
       leading: const Icon(Icons.brightness_6_outlined),
       title: const Text('Dark theme'),
       trailing: Switch(
-        value: isDarkTheme,
+        value: viewModel.value.isDarkTheme,
         onChanged: (bool enabled) {
           context.read<SettingViewModel>().changeTheme(isDarkTheme: enabled);
         },

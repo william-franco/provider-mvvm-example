@@ -53,7 +53,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
     userViewModel = UserViewModelImpl(userRepository: userRepository);
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      _initDependencies();
+      await _initDependencies();
     });
   }
 

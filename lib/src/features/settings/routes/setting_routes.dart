@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
+import 'package:provider_mvvm_example/src/common/state_management/state_management.dart';
 import 'package:provider_mvvm_example/src/features/settings/view_models/setting_view_model.dart';
 import 'package:provider_mvvm_example/src/features/settings/views/setting_view.dart';
 
@@ -12,7 +12,9 @@ class SettingRoutes {
     GoRoute(
       path: setting,
       builder: (context, state) {
-        return SettingView(settingViewModel: context.read<SettingViewModel>());
+        return SettingView(
+          settingViewModel: context.inject<SettingViewModel>(),
+        );
       },
     ),
   ];

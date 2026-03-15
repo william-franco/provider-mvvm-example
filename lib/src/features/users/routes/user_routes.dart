@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
+import 'package:provider_mvvm_example/src/common/state_management/state_management.dart';
 import 'package:provider_mvvm_example/src/features/users/models/user_model.dart';
 import 'package:provider_mvvm_example/src/features/users/view_models/user_view_model.dart';
 import 'package:provider_mvvm_example/src/features/users/views/user_detail_view.dart';
@@ -15,7 +15,7 @@ class UserRoutes {
     GoRoute(
       path: users,
       builder: (context, state) {
-        return UserView(userViewModel: context.read<UserViewModel>());
+        return UserView(userViewModel: context.inject<UserViewModel>());
       },
     ),
     GoRoute(

@@ -5,7 +5,7 @@ import 'package:provider_mvvm_example/src/common/services/http_service.dart';
 import 'package:provider_mvvm_example/src/features/users/exceptions/user_exception.dart';
 import 'package:provider_mvvm_example/src/features/users/models/user_model.dart';
 
-typedef UserResult = Result<List<UserModel>, UserException>;
+typedef UserResult = ResultPattern<List<UserModel>, UserException>;
 
 abstract interface class UserRepository {
   Future<UserResult> findAllUsers();

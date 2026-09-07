@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:provider_mvvm_example/src/common/patterns/app_state_pattern.dart';
+import 'package:provider_mvvm_example/src/common/patterns/state_pattern.dart';
 import 'package:provider_mvvm_example/src/common/patterns/result_pattern.dart';
 import 'package:provider_mvvm_example/src/features/users/exceptions/user_exception.dart';
 import 'package:provider_mvvm_example/src/features/users/models/user_model.dart';

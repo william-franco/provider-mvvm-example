@@ -1,12 +1,37 @@
 # Provider MVVM Example
 
-MVVM pattern example using Provider.
+Reference MVVM app using Provider for dependency injection and widget rebuilds.
+
+Features expose views, view models, and repositories with shared routing and services.
+
+Demonstrates `StatePattern` and `ResultPattern` across users and settings modules.
+
+Includes unit tests for repositories and view models with Mockito-generated mocks.
+
+## Structure
+
+```mermaid
+flowchart TB
+  Routes --> UserRoute
+  Routes --> SettingRoute
+  subgraph usersFeature [users]
+    UserRoute --> UserViewModel
+    UserViewModel --> UserRepository
+    UserRepository --> HttpService
+  end
+  HttpService --> JsonPlaceholder[JSONPlaceholder API]
+  subgraph settingsFeature [settings]
+    SettingRoute --> SettingViewModel
+    SettingViewModel --> SettingRepository
+    SettingRepository --> SharedPreferences
+  end
+```
 
 ## Stack
 
 | Technology | Version |
 |------------|---------|
-| Dart SDK | ^3.13.2 |
+| Dart SDK | ^3.13.3 |
 | connectivity_plus | ^7.0.0 |
 | cupertino_icons | ^1.0.8 |
 | dio | ^5.9.2 |

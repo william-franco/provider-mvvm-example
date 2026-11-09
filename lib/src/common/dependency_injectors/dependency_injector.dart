@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_mvvm_example/src/common/services/connection_service.dart';
 import 'package:provider_mvvm_example/src/common/services/http_service.dart';
 import 'package:provider_mvvm_example/src/common/services/storage_service.dart';
+import 'package:provider_mvvm_example/src/common/services/url_launcher_service.dart';
 import 'package:provider_mvvm_example/src/features/settings/repositories/setting_repository.dart';
 import 'package:provider_mvvm_example/src/features/settings/view_models/setting_view_model.dart';
 import 'package:provider_mvvm_example/src/features/users/repositories/user_repository.dart';
@@ -22,6 +23,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
   late final ConnectionService connectionService;
   late final HttpService httpService;
   late final StorageService storageService;
+  late final UrlLauncherService urlLauncherService;
 
   // Repositories
   late final SettingRepository settingRepository;
@@ -38,9 +40,13 @@ class _DependencyInjectorState extends State<DependencyInjector> {
     connectionService = ConnectionServiceImpl();
     httpService = HttpServiceImpl();
     storageService = StorageServiceImpl();
+    urlLauncherService = UrlLauncherServiceImpl();
 
     // Repositories
-    settingRepository = SettingRepositoryImpl(storageService: storageService);
+    settingRepository = SettingRepositoryImpl(
+      storageService: storageService,
+      urlLauncherService: urlLauncherService,
+    );
     userRepository = UserRepositoryImpl(
       connectionService: connectionService,
       httpService: httpService,
@@ -78,6 +84,7 @@ class _DependencyInjectorState extends State<DependencyInjector> {
         Provider<ConnectionService>.value(value: connectionService),
         Provider<HttpService>.value(value: httpService),
         Provider<StorageService>.value(value: storageService),
+        Provider<UrlLauncherService>.value(value: urlLauncherService),
         // Repositories
         Provider<SettingRepository>.value(value: settingRepository),
         Provider<UserRepository>.value(value: userRepository),

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:provider_mvvm_example/src/common/dependency_injectors/dependency_injector.dart';
 import 'package:provider_mvvm_example/src/common/routes/routes.dart';
 import 'package:provider_mvvm_example/src/common/state_management/state_management.dart';
